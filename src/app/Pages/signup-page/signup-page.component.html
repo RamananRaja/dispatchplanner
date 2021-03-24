@@ -28,48 +28,81 @@
       <!--name-->
       <div class="field">
         <p class="control columns">
-          <input class="input column" type="text" placeholder="First name" />
+          <input
+            #firstNameInput
+            class="input column"
+            type="text"
+            placeholder="First name"
+          />
           &nbsp;
-          <input class="input column" type="text" placeholder="Middle name" />
-          &nbsp;
-          <input class="input column" type="text" placeholder="Last name" />
+          <input
+            #lastNameInput
+            class="input column"
+            type="text"
+            placeholder="Last name"
+          />
         </p>
       </div>
       <br />
       <!--username-->
       <div class="field">
         <p class="control">
-          <input class="input" type="text" placeholder="username" />
+          <input
+            #userNameInput
+            class="input"
+            type="text"
+            placeholder="username"
+          />
         </p>
       </div>
       <!--mobile-->
       <div class="field">
         <p class="control">
-          <input class="input" type="integer" placeholder="mobile" />
+          <input
+            #contactInput
+            class="input"
+            type="integer"
+            placeholder="contact"
+          />
         </p>
       </div>
 
       <!--email-->
       <div class="field">
         <p class="control">
-          <input class="input" type="email" placeholder="Email" />
+          <input #emailInput class="input" type="email" placeholder="Email" />
         </p>
       </div>
       <!--password-->
       <div class="field">
         <p class="control">
-          <input class="input" type="password" placeholder="Password" />
+          <input
+            #passwordInput
+            class="input"
+            type="password"
+            placeholder="Password"
+          />
         </p>
       </div>
-      <div class="field">
-        <p class="control">
-          <input class="input" type="password" placeholder="Confirm Password" />
-        </p>
-      </div>
+
       <!--login button-->
       <div class="field">
         <p class="control">
-          <button class="button is-success">Signup</button>
+          <button
+            class="button is-success"
+            (click)="
+              onSignupButtonClicked(
+                firstNameInput.value,
+                lastNameInput.value,
+                contactInput.value,
+                userNameInput.value,
+                emailInput.value,
+                passwordInput.value
+              )
+            "
+          >
+            Signup
+          </button>
         </p>
       </div>
     </div>
