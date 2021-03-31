@@ -15,7 +15,9 @@
   <div style="padding: 20px; font-size: 25px">
     <strong> Freight Planning</strong>
     <br />
-    <p style="text-align: center"><strong> Freight Order 41000518 </strong></p>
+    <p style="text-align: center">
+      <strong> Freight Order - 41000518 </strong>
+    </p>
   </div>
   <br />
   <div
@@ -36,32 +38,14 @@
             <th>Required Truck</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngFor="let data of fplan_s2_data">
           <tr>
-            <td>10</td>
-            <td>805612768</td>
-            <td>CBT-001-9082</td>
-            <td>xxyy</td>
-            <td>100</td>
-            <td>100</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>20</td>
-            <td>805612769</td>
-            <td>CBT-001-9082</td>
-            <td>xxyy</td>
-            <td>100</td>
-            <td>100</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>30</td>
-            <td>805612770</td>
-            <td>CBT-001-9082</td>
-            <td>xxyy</td>
-            <td>100</td>
-            <td>100</td>
+            <td>-</td>
+            <td>{{ data["deliveryOrderNumber"] }}</td>
+            <td>{{ data["materialNumber"] }}</td>
+            <td>{{ data["materialDescription"] }}</td>
+            <td>{{ data["materialQuantity"] }}</td>
+            <td>{{ data["overallWeight"] }}</td>
             <td></td>
           </tr>
         </tbody>

@@ -13,8 +13,13 @@ export class WebReqService {
   }
 
   get(uri: string) {
-    console.log(`${this.ROOT_URL}/${uri}`);
-    return this.http.get(`${this.ROOT_URL}/${uri}`)
+    //console.log(`${this.ROOT_URL}/${uri}`);
+    return this.http.get(`${this.ROOT_URL}/${uri}`);
+  }
+
+  getDelNo(uri: string, payload: object) {
+    //console.log(`${this.ROOT_URL}/${uri}`);
+    return this.http.post(`${this.ROOT_URL}/${uri}`, payload);
   }
 
   signup(firstName: string, lastName: string, userName: string, contact: number, email: string, password: string) {

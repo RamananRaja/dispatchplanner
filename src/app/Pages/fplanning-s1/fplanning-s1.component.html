@@ -22,44 +22,55 @@
   >
     <!--table-->
     <div style="text-align: center">
-      <table class="table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Freight Order</th>
-            <th>Status</th>
-            <th>Source location</th>
-            <th>Destination</th>
-            <th>Departure date</th>
-            <th>Departure time</th>
-            <th>Planned delivery date</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let data of fplan_s1_data">
-          <tr>
-            <label class="checkbox">
-              <input type="checkbox" />
-            </label>
-            <td>{{ data["freightOrderNumber"] }}</td>
-            <td>{{ data["status"] }}</td>
-            <td>{{ data["sourceLocation"] }}</td>
-            <td>{{ data["destination"] }}</td>
-            <td>{{ data["departureDateTime"] }}</td>
-            <td>{{ data["departureDateTime"] }}</td>
-            <td>{{ data["plannedDeliveryDate"] }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Freight Order</th>
+              <th>Status</th>
+              <th>Source location</th>
+              <th>Destination</th>
+              <th>Departure date</th>
+              <th>Departure time</th>
+              <th>Planned delivery date</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let data of fplan_s1_data; let i = index">
+            <tr>
+              <label class="checkbox">
+                <input
+                  type="checkbox"
+                  [value]="data.freightOrderNumber"
+                  (change)="onCheckboxChange($event)"
+                />
+              </label>
+              <td>{{ data["freightOrderNumber"] }}</td>
+              <td>{{ data["status"] }}</td>
+              <td>{{ data["sourceLocation"] }}</td>
+              <td>{{ data["destinationLocation"] }}</td>
+              <td>{{ data["departureDateTime"] }}</td>
+              <td>{{ data["departureDateTime"] }}</td>
+              <td>{{ data["plannedDeliveryDate"] }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p
+          class="error"
+          *ngIf="this.form.controls['checkArray'].errors?.required"
+        >
+          Checkbox is required, select atleast one value.
+        </p>
+        <div>
+          <button
+            style="position: absolute; right: 70px"
+            class="button is-success"
+          >
+            FREIGHT PLANNER
+          </button>
+        </div>
+      </form>
     </div>
-  </div>
-  <div>
-    <button
-      style="position: absolute; right: 70px"
-      class="button is-success"
-      routerLink="/fplanning-s2"
-    >
-      FREIGHT PLANNER
-    </button>
   </div>
 </div>

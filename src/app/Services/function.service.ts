@@ -11,4 +11,11 @@ export class FunctionService {
   getFPlan_s1() {
     return this.webreqservice.get(`fplan-s1`);
   }
+
+  getDelNoFromFreightOrderNo(arr: Object) {
+    //console.log('from functionService.ts', { arr });
+
+    return this.webreqservice.getDelNo(`get-delno`, { arr });
+
+  }
 }
