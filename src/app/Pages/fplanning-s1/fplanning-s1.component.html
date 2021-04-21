@@ -12,15 +12,24 @@
     </div>
   </div>
   <!--main-->
-  <div style="padding: 20px; font-size: 25px">
+  <div style="text-align: center; padding: 20px; font-size: 25px">
     <strong> Freight Planning</strong>
+    <div>
+      <button
+        style="position: absolute; right: 70px"
+        class="button is-success"
+        routerLink="/fplanning-s2"
+      >
+        FREIGHT PLANNER</button
+      ><br />
+    </div>
   </div>
   <br />
   <div
     class="centered-content columns"
     style="background-color: rgb(8, 51, 51)"
   >
-    <!--table-->
+    <!--table-left-->
     <div style="text-align: center">
       <form [formGroup]="form" (ngSubmit)="submitForm()" novalidate>
         <table class="table">
@@ -31,8 +40,7 @@
               <th>Status</th>
               <th>Source location</th>
               <th>Destination</th>
-              <th>Departure date</th>
-              <th>Departure time</th>
+              <th>Departure date & time</th>
               <th>Planned delivery date</th>
               <th></th>
             </tr>
@@ -41,6 +49,7 @@
             <tr>
               <label class="checkbox">
                 <input
+                  [disabled]="data['status'] === 'Ready' ? null : true"
                   type="checkbox"
                   [value]="data.freightOrderNumber"
                   (change)="onCheckboxChange($event)"
@@ -50,7 +59,6 @@
               <td>{{ data["status"] }}</td>
               <td>{{ data["sourceLocation"] }}</td>
               <td>{{ data["destinationLocation"] }}</td>
-              <td>{{ data["departureDateTime"] }}</td>
               <td>{{ data["departureDateTime"] }}</td>
               <td>{{ data["plannedDeliveryDate"] }}</td>
             </tr>
@@ -62,14 +70,6 @@
         >
           Checkbox is required, select atleast one value.
         </p>
-        <div>
-          <button
-            style="position: absolute; right: 70px"
-            class="button is-success"
-          >
-            FREIGHT PLANNER
-          </button>
-        </div>
       </form>
     </div>
   </div>

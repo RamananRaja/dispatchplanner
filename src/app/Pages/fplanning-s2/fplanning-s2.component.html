@@ -12,53 +12,127 @@
     </div>
   </div>
   <!--main-->
-  <div style="padding: 20px; font-size: 25px">
+  <div style="padding-left: 15px; font-size: 25px">
     <strong> Freight Planning</strong>
     <br />
     <p style="text-align: center">
-      <strong> Freight Order - 41000518 </strong>
+      <strong> Freight Order - {{ arr["checkArray"] }} </strong>
     </p>
+    <div style="padding-right: 100px">
+      <button
+        style="position: absolute; right: 70px"
+        class="button is-success"
+        (click)="onTruckAvailabilityClicked()"
+      >
+        Truck Availabilty
+      </button>
+
+      <button class="button is-success" (click)="onRFTClicked()">
+        Request For Transportation
+      </button>
+    </div>
+
+    <div style="padding-top: 5px">
+      <button
+        style="position: absolute; right: 70px"
+        class="button is-success"
+        (click)="onAllocateTruck()"
+      >
+        Allocate Truck
+      </button>
+    </div>
+    <br />
   </div>
   <br />
   <div
+    #freight
     class="centered-content columns"
-    style="background-color: rgb(8, 51, 51)"
+    style="background-color: rgb(223, 250, 203)"
   >
-    <!--table-->
-    <div style="text-align: center">
+    <!--table-left-->
+    <div class="column" style="padding-left: 10px">
       <table class="table">
         <thead>
           <tr>
-            <th>Line Item</th>
             <th>Delivery Order</th>
             <th>Material No</th>
             <th>Description</th>
             <th>Quantity</th>
             <th>Overall Weight</th>
             <th>Required Truck</th>
+            <th>Size</th>
           </tr>
         </thead>
-        <tbody *ngFor="let data of fplan_s2_data">
-          <tr>
-            <td>-</td>
-            <td>{{ data["deliveryOrderNumber"] }}</td>
-            <td>{{ data["materialNumber"] }}</td>
-            <td>{{ data["materialDescription"] }}</td>
-            <td>{{ data["materialQuantity"] }}</td>
-            <td>{{ data["overallWeight"] }}</td>
-            <td></td>
+        <tbody
+          *ngFor="let DelData of fplan_s2_data"
+          (click)="onDelNoClicked(DelData)"
+        >
+          <tr
+            *ngIf="DelData['truckAllocated'] != true"
+            class="tableRow"
+            [ngClass]="{ 'is-active': this.currentOrder?._id === DelData._id }"
+            (click)="onOrderClick(DelData)"
+          >
+            <td>{{ DelData["deliveryOrderNumber"] }}</td>
+            <td>{{ DelData["materialNumber"] }}</td>
+            <td>{{ DelData["materialDescription"] }}</td>
+            <td>{{ DelData["materialQuantity"] }}</td>
+            <td>{{ DelData["overallWeight"] }}</td>
+            <td>
+              <strong>{{ DelData["requiredTruck"] }}</strong>
+            </td>
+            <td>{{ DelData["requiredTruckSize"] }}</td>
           </tr>
         </tbody>
       </table>
     </div>
-  </div>
-  <div style="padding-right: 20px">
-    <button
-      style="position: absolute; right: 70px"
-      class="button is-success"
-      routerLink="/foplanning-s2"
-    >
-      Truck Availabilty
-    </button>
+    <br />
+    <!--table-right-1-->
+
+    <div class="column" style="text-align: center; align-content: left">
+      <table *ngIf="availableTrucks != null" class="table">
+        <thead>
+          <tr>
+            <th>Vehicle size</th>
+            <th>Resource</th>
+            <th>Vehicle Reg.Number</th>
+            <th>Maximum Capacity</th>
+            <th>Maximum Weight</th>
+            <th>Availability</th>
+            <th *ngIf="availableTrucks[0]['rating'] != null">Rating</th>
+            <th *ngIf="availableTrucks[0]['charge'] != null">Charge</th>
+          </tr>
+        </thead>
+
+        <tbody
+          *ngFor="let truck of availableTrucks"
+          (click)="onTruckClick(truck)"
+        >
+          <tr
+            class="tableRow"
+            *ngIf="truck['available'] != false"
+            [ngClass]="{ 'is-active': isThere(truck._id) }"
+          >
+            <td>{{ truck["availableTruckSize"] }}</td>
+            <td>{{ truck["resource"] }}</td>
+            <td>{{ truck["registrationNumber"] }}</td>
+            <td>{{ truck["maximumCapacity"] }}</td>
+            <td>{{ truck["maximumWeight"] }}</td>
+            <td>
+              <strong>{{ truck["available"] }}</strong>
+            </td>
+            <td>
+              {{ truck["rating"] }}
+            </td>
+            <td>
+              {{ truck["charge"] }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="availableTrucks == null">
+        <b>Click "Truck Availability" to display available trucks</b>
+      </div>
+    </div>
   </div>
 </div>

@@ -14,8 +14,18 @@ export class FunctionService {
 
   getDelNoFromFreightOrderNo(arr: Object) {
     //console.log('from functionService.ts', { arr });
-
     return this.webreqservice.getDelNo(`get-delno`, { arr });
+  }
 
+  availableTrucks() {
+    return this.webreqservice.get('trucks-available');
+  }
+
+  rftAvailableTrucks() {
+    return this.webreqservice.get('rft-trucks-available');
+  }
+
+  updateVehicleNum(vehNum: String[], delNum: Number) {
+    return this.webreqservice.post('updateVehicleNumber', { vehNum, delNum });
   }
 }

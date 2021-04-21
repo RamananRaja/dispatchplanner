@@ -17,6 +17,10 @@ export class WebReqService {
     return this.http.get(`${this.ROOT_URL}/${uri}`);
   }
 
+  post(uri: String, payload: object) {
+    return this.http.post(`${this.ROOT_URL}/${uri}`, payload);
+  }
+
   getDelNo(uri: string, payload: object) {
     //console.log(`${this.ROOT_URL}/${uri}`);
     return this.http.post(`${this.ROOT_URL}/${uri}`, payload);
