@@ -65,10 +65,6 @@ export class FPlanningS2Component implements OnInit {
 
   }
 
-  onAllocateTruckClicked() {
-
-  }
-
   onOrderClick(item: any) {
     this.currentOrder = item;
     console.log(this.currentOrder);
@@ -93,10 +89,17 @@ export class FPlanningS2Component implements OnInit {
 
   onAllocateTruck() {
     const registrationNumber = this.getTruckNumber();
+
     this.functionService.updateVehicleNum(registrationNumber, this.currentOrder.deliveryOrderNumber).subscribe((res: any) => {
       console.log(registrationNumber, this.currentOrder.deliveryOrderNumber);
       console.log(res);
     })
+
+    //refresh delno table
+    this.functionService.getDelNoFromFreightOrderNo(this.arr).subscribe((res: any) => {
+      this.fplan_s2_data = res;
+      console.log(this.fplan_s2_data);
+    });
 
   }
 

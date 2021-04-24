@@ -37,6 +37,7 @@
             <tr>
               <th></th>
               <th>Freight Order</th>
+              <!--<th>Delivery Order</th>-->
               <th>Status</th>
               <th>Source location</th>
               <th>Destination</th>
@@ -56,6 +57,9 @@
                 />
               </label>
               <td>{{ data["freightOrderNumber"] }}</td>
+              <!--<td *ngFor="let data2 of fplan_s1_data">
+                {{ data2["deliveryOrderNumber"] }}
+              </td>-->
               <td>{{ data["status"] }}</td>
               <td>{{ data["sourceLocation"] }}</td>
               <td>{{ data["destinationLocation"] }}</td>

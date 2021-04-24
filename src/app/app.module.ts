@@ -10,6 +10,7 @@ import { FOCreationComponent } from './Pages/focreation/focreation.component';
 import { FOListComponent } from './Pages/folist/folist.component';
 import { FPlanningS1Component } from './Pages/fplanning-s1/fplanning-s1.component';
 import { FPlanningS2Component } from './Pages/fplanning-s2/fplanning-s2.component';
+import { FoviewComponent } from './Pages/foview/foview.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FPlanningS2Component } from './Pages/fplanning-s2/fplanning-s2.componen
     FOCreationComponent,
     FOListComponent,
     FPlanningS1Component,
-    FPlanningS2Component
+    FPlanningS2Component,
+    FoviewComponent
   ],
   imports: [
     BrowserModule,

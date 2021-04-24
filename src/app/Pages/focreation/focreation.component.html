@@ -12,72 +12,102 @@
     </div>
   </div>
   <!--main-->
-  <div style="padding: 20px; font-size: 25px">
+  <div style="text-align: center; padding: 20px; font-size: 25px">
     <strong> Freight Order Creation</strong>
+    <div>
+      <button style="position: absolute; right: 70px" class="button is-success">
+        OPTIMIZE PLANNING</button
+      ><br />
+    </div>
   </div>
   <br />
   <div
     class="centered-content columns"
     style="background-color: rgb(8, 51, 51)"
   >
-    <!--table-->
+    <!--table-left-->
     <div style="text-align: center">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Check box field</th>
-            <th>Date</th>
-            <th>Del.No</th>
-            <th>Material</th>
-            <th>Quantity</th>
-            <th>Weight unit</th>
-            <th>Sold to party</th>
-            <th>Destination</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>*</th>
-            <td>28/02/2021</td>
-            <td>805612768</td>
-            <td>CBT0001-9982</td>
-            <td>10 kgs</td>
-            <td>100</td>
-            <td>111001</td>
-            <td>USA</td>
-          </tr>
-          <tr>
-            <th>*</th>
-            <td>28/02/2021</td>
-            <td>805612769</td>
-            <td>CBT0001-9983</td>
-            <td>15 kgs</td>
-            <td>150</td>
-            <td>112002</td>
-            <td>UK</td>
-          </tr>
-          <tr>
-            <th>*</th>
-            <td>01/03/2021</td>
-            <td>805612770</td>
-            <td>CBT0001-9991</td>
-            <td>17 kgs</td>
-            <td>170</td>
-            <td>113003</td>
-            <td>INDIA</td>
-          </tr>
-        </tbody>
-      </table>
+      <form>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>CheckBox</th>
+              <th>Date</th>
+              <th>Delivery No</th>
+              <th>Material</th>
+              <th>quantity</th>
+              <th>UOM</th>
+              <th>WT Unit</th>
+              <th>Overall weight</th>
+              <th>Sold to party</th>
+              <th>Payer</th>
+              <th>Destination</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <label class="checkbox">
+                <input type="checkbox" />
+              </label>
+              <td>17-12-2020</td>
+              <td>7457883</td>
+              <td>CBT-001-3458</td>
+              <td>10</td>
+              <td>KG</td>
+              <td>20</td>
+              <td>200</td>
+              <td>110044</td>
+              <td>110044</td>
+              <td>Madurai</td>
+            </tr>
+            <tr>
+              <label class="checkbox">
+                <input type="checkbox" />
+              </label>
+              <td>17-12-2020</td>
+              <td>7456890</td>
+              <td>CBT-001-9182</td>
+              <td>15</td>
+              <td>KG</td>
+              <td>10</td>
+              <td>150</td>
+              <td>110010</td>
+              <td>110010</td>
+              <td>Coimbatore</td>
+            </tr>
+            <tr>
+              <label class="checkbox">
+                <input type="checkbox" />
+              </label>
+              <td>17-12-2020</td>
+              <td>7456923</td>
+              <td>CBT-001-9082</td>
+              <td>5</td>
+              <td>KG</td>
+              <td>20</td>
+              <td>1000</td>
+              <td>117510</td>
+              <td>117510</td>
+              <td>Cuddalore</td>
+            </tr>
+            <tr>
+              <label class="checkbox">
+                <input type="checkbox" />
+              </label>
+              <td>17-12-2020</td>
+              <td>7447883</td>
+              <td>CBT-001-7032</td>
+              <td>20</td>
+              <td>KG</td>
+              <td>10</td>
+              <td>2000</td>
+              <td>146010</td>
+              <td>146010</td>
+              <td>Pudhucherry</td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
     </div>
-  </div>
-  <div style="padding-right: 20px">
-    <button
-      style="position: absolute; right: 70px"
-      class="button is-success"
-      routerLink="/fplanning-s1"
-    >
-      Freight planning
-    </button>
   </div>
 </div>
